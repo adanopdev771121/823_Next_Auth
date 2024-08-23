@@ -1,6 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
-
-export default function EyeOpen() {
+export default function IconEyeOpen() {
   return (
     <svg
       width="18"
