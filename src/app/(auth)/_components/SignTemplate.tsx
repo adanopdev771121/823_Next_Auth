@@ -7,6 +7,7 @@ import IconEyeOpen from "../_components/IconEyeOpen";
 import IconEyeClose from "../_components/IconEyeClose";
 import IconGoogle from "../_components/IconGoogle";
 import IconMail from "../_components/IconMail";
+import axios from "axios";
 
 interface SignTemplateProps {
   title: string;
@@ -48,7 +49,7 @@ export default function SignTemplate({
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full h-20 rounded-xl border border-solid border-gray-300 text-xl"
+            className="w-full h-20 rounded-xl border border-solid border-gray-300 text-xl px-5"
           />
           <div
             className="absolute right-5"
@@ -78,7 +79,17 @@ export default function SignTemplate({
             {isPasswordShown ? <IconEyeOpen /> : <IconEyeClose />}
           </button>
         </div>
-        <button className="w-full h-20 bg-green-500 font-bold text-white rounded-xl text-xl text-center mt-6">
+        <button
+          className="w-full h-20 bg-green-500 font-bold text-white rounded-xl text-xl text-center mt-6"
+          onClick={async () => {
+            try {
+              const res = await axios.post("/api/auth", { email, password });
+              console.log(res.data);
+            } catch (err) {
+              console.error(err);
+            }
+          }}
+        >
           {title}
         </button>
       </div>

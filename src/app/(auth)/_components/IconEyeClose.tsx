@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-export default function EyeClose() {
+export default function IconEyeClose() {
   return (
     <svg
       width="18"
